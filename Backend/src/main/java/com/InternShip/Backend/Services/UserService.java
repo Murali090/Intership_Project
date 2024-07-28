@@ -15,4 +15,8 @@ public class UserService {
     public UserService(UserRepo repo) {
         this.repo = repo;
     }
+
+	public void getUsers() {
+    repo.findAll();
+	}
 }
