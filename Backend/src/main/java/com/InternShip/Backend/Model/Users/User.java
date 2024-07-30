@@ -38,10 +38,9 @@ public class User {
   @OneToMany(mappedBy = "users")
   private List<Recepies> recepie;
 
-  public user(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String password,
-      @Email @NotEmpty String email,
-      List<Recepies> recepie) {
-
+  public User(Long userId, @NotEmpty String firstName, @NotEmpty String lastName, @NotNull String password,
+      @Email @NotEmpty String email, List<Recepies> recepie) {
+    this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.password = password;
