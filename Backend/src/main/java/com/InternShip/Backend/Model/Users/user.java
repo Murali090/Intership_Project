@@ -32,7 +32,7 @@ public class user {
   @NotEmpty
   private String email;
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "users")
   private List<recepies> recepie;
 
   public user(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String password,

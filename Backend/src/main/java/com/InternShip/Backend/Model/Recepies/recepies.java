@@ -3,6 +3,7 @@ package com.InternShip.Backend.Model.Recepies;
 import com.InternShip.Backend.Model.Users.user;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -10,6 +11,7 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class recepies {
 
+  @Id
   @ManyToOne()
   private user users;
 
@@ -17,11 +19,11 @@ public class recepies {
   private String title;
 
   @NotNull
-  @Size(min = 5, max = 15, message = "Not enought characters")
+  @Size(min = 2, max = 15, message = "Not enought characters")
   private String ingredients;
 
   @NotNull
-  @Size(min = 5, max = 20, message = "Not enought word")
+  @Size(min = 2, max = 20, message = "Not enought word")
   private String instructions;
 
   public recepies() {
