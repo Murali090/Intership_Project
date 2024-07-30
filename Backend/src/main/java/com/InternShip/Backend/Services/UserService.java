@@ -10,13 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private UserRepo repo;
+  private UserRepo repo;
 
-    public UserService(UserRepo repo) {
-        this.repo = repo;
-    }
+  public UserService(UserRepo repo) {
+    this.repo = repo;
+  }
 
-	public void getUsers() {
-    repo.findAll();
-	}
 }
