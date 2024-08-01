@@ -26,9 +26,4 @@ public class UserController {
     service.newuser(user);
     return "Success";
   }
-
-  @GetMapping("/")
-  public String greet() {
-    return "Hello Murali";
-  }
 }
