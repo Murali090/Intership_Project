@@ -17,14 +17,17 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 public class User {
 
+  enum GENDER {
+    MALE, FEMALE;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long userId;
 
-  @NotEmpty
+  @NotNull
   private String firstName;
-
-  @NotEmpty
+  @NotNull
   private String lastName;
 
   @NotNull
@@ -38,14 +41,18 @@ public class User {
   @OneToMany(mappedBy = "users")
   private List<Recepies> recepie;
 
+  @NotNull
+  private GENDER gender;
+
   public User(Long userId, @NotEmpty String firstName, @NotEmpty String lastName, @NotNull String password,
-      @Email @NotEmpty String email, List<Recepies> recepie) {
+      @Email @NotEmpty String email, List<Recepies> recepie, GENDER gender) {
     this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.password = password;
     this.email = email;
     this.recepie = recepie;
+    this.gender = gender;
   }
 
   public User() {
@@ -99,9 +106,17 @@ public class User {
     this.recepie = recepie;
   }
 
+  public GENDER getGender() {
+    return gender;
+  }
+
+  public void setGender(GENDER gender) {
+    this.gender = gender;
+  }
+
   @Override
   public String toString() {
-    return "user [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
-        + ", email=" + email + ", recepie=" + recepie + "]";
+    return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password
+        + ", email=" + email + ", recepie=" + recepie + ", gender=" + gender + "]";
   }
 }
