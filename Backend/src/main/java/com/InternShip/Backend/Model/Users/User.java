@@ -1,21 +1,24 @@
 package com.InternShip.Backend.Model.Users;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import java.util.List;
 
-import com.InternShip.Backend.Model.Recepies.recepies;
+import com.InternShip.Backend.Model.Recepies.Recepies;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class user {
+public class User {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long userId;
 
   @NotEmpty
@@ -33,12 +36,11 @@ public class user {
   private String email;
 
   @OneToMany(mappedBy = "users")
-  private List<recepies> recepie;
+  private List<Recepies> recepie;
 
-  public user(@NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty String password,
-      @Email @NotEmpty String email,
-      List<recepies> recepie) {
-
+  public User(Long userId, @NotEmpty String firstName, @NotEmpty String lastName, @NotNull String password,
+      @Email @NotEmpty String email, List<Recepies> recepie) {
+    this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.password = password;
@@ -46,7 +48,7 @@ public class user {
     this.recepie = recepie;
   }
 
-  public user() {
+  public User() {
   }
 
   public Long getUserId() {
@@ -89,11 +91,11 @@ public class user {
     this.email = email;
   }
 
-  public List<recepies> getRecepie() {
+  public List<Recepies> getRecepie() {
     return recepie;
   }
 
-  public void setRecepie(List<recepies> recepie) {
+  public void setRecepie(List<Recepies> recepie) {
     this.recepie = recepie;
   }
 

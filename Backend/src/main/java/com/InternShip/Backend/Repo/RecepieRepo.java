@@ -1,14 +1,14 @@
 package com.InternShip.Backend.Repo;
 
-import com.InternShip.Backend.Model.Users.User;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.InternShip.Backend.Model.Recepies.Recepies;
+
 /**
- * UserRepo
+ * RecepieRepo
  */
 @Repository
-public interface UserRepo extends JpaRepository<User, Long> {
+public interface RecepieRepo extends JpaRepository<Recepies, Long> {
 
 }
