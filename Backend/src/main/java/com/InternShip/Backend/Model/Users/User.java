@@ -30,7 +30,6 @@ public class User {
   @NotNull
   private String lastName;
 
-  @NotNull
   @JsonIgnore
   private String password;
 
