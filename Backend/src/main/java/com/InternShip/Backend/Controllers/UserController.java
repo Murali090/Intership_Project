@@ -3,7 +3,6 @@ package com.InternShip.Backend.Controllers;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.InternShip.Backend.Exceptions.userNotFoundException;
 import com.InternShip.Backend.Model.Recepies.Recepies;
 import com.InternShip.Backend.Model.Users.User;
 import com.InternShip.Backend.Repo.RecepieRepo;
@@ -18,7 +18,6 @@ import com.InternShip.Backend.Repo.UserRepo;
 import com.InternShip.Backend.Services.UserService;
 
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/users")
@@ -64,6 +63,9 @@ public class UserController {
 
     Optional<User> user = repo.findById(id);
 
+    if (user.isEmpty()) {
+      throw new userNotFoundException("User Not Found " + id);
+    }
     return user.get().getRecepie();
   }
 }
