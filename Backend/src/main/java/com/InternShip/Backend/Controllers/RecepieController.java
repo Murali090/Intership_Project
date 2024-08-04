@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.InternShip.Backend.Model.Recepies.Recepies;
-import com.InternShip.Backend.Model.Users.User;
 import com.InternShip.Backend.Services.RecepieService;
 
 import jakarta.validation.Valid;

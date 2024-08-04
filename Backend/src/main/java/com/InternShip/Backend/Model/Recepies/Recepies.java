@@ -17,6 +17,7 @@ public class Recepies {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private Long recepieId;
 
   @ManyToOne(fetch = FetchType.LAZY)

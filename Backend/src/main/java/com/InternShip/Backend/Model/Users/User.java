@@ -38,6 +38,7 @@ public class User {
   private String email;
 
   @OneToMany(mappedBy = "users")
+  @JsonIgnore
   private List<Recepies> recepie;
 
   @NotNull

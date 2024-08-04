@@ -68,4 +68,15 @@ public class UserController {
     }
     return user.get().getRecepie();
   }
+
+  @GetMapping("/getUserRecepie/{id}/recepie/{name}")
+  public List<Recepies> getaRecepies(@PathVariable Long id, @PathVariable String name) {
+
+    Optional<User> user = repo.findByName(id, name);
+    if (user.isEmpty()) {
+      throw new userNotFoundException("User Not Found " + id);
+    }
+
+    return user.get().getRecepie();
+  }
 }

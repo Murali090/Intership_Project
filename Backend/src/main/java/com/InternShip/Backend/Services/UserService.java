@@ -1,6 +1,5 @@
 package com.InternShip.Backend.Services;
 
-import com.InternShip.Backend.Model.Recepies.Recepies;
 import com.InternShip.Backend.Model.Users.User;
 import com.InternShip.Backend.Repo.UserRepo;
 
