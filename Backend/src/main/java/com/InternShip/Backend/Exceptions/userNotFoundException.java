@@ -12,10 +12,3 @@ public class userNotFoundException extends RuntimeException {
     super(message);
   }
 }
-
-@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-class wrongOperation extends RuntimeException {
-  wrongOperation(String message) {
-    super(message);
-  }
-}

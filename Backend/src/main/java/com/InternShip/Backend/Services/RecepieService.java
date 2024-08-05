@@ -24,4 +24,8 @@ public class RecepieService {
     return "success";
   }
 
+  public List<Recepies> findByname(Long id, String name) {
+    return rrepo.findByName(id, name);
+  }
+
 }

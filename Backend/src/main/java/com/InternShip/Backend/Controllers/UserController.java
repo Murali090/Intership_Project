@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.InternShip.Backend.Exceptions.userNotFoundException;
+import com.InternShip.Backend.Exceptions.wrongOperation;
 import com.InternShip.Backend.Model.Recepies.Recepies;
 import com.InternShip.Backend.Model.Users.User;
 import com.InternShip.Backend.Repo.RecepieRepo;
@@ -48,8 +49,12 @@ public class UserController {
   }
 
   @PostMapping("/registerUserRecepie/{id}/recepies")
-  public String register(@PathVariable Long id, @Valid @RequestBody Recepies recepie) {
+  public String register(@PathVariable Long id, @Valid @RequestBody(required = true) Recepies recepie) {
     Optional<User> user = repo.findById(id);
+
+    if (recepie == null) {
+      throw new wrongOperation("Wrong Body");
+    }
 
     recepie.setUsers(user.get());
 
@@ -69,14 +74,4 @@ public class UserController {
     return user.get().getRecepie();
   }
 
-  @GetMapping("/getUserRecepie/{id}/recepie/{name}")
-  public List<Recepies> getaRecepies(@PathVariable Long id, @PathVariable String name) {
-
-    Optional<User> user = repo.findByName(id, name);
-    if (user.isEmpty()) {
-      throw new userNotFoundException("User Not Found " + id);
-    }
-
-    return user.get().getRecepie();
-  }
 }
