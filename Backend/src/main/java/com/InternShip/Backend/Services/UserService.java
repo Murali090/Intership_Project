@@ -21,8 +21,8 @@ public class UserService {
     this.repo = repo;
   }
 
-  public void newuser(@Valid User user) {
-    repo.save(user);
+  public User newuser(@Valid User user) {
+    return repo.save(user);
   }
 
   public List<User> getUsers() {
