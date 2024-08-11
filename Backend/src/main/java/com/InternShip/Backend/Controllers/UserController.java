@@ -3,10 +3,10 @@ package com.InternShip.Backend.Controllers;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-import org.apache.catalina.connector.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,6 @@ import com.InternShip.Backend.Repo.UserRepo;
 import com.InternShip.Backend.Services.UserService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/users")
