@@ -1,8 +1,10 @@
 package com.InternShip.Backend.Model.Recepies;
 
 import com.InternShip.Backend.Model.Users.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,28 +17,30 @@ public class Recepies {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonIgnore
   private Long recepieId;
 
-  @ManyToOne()
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonIgnore
   private User users;
 
   @NotNull
   private String title;
 
   @NotNull
-  @Size(min = 2, max = 15, message = "Not enought characters")
+  @Size(min = 1)
   private String ingredients;
 
   @NotNull
-  @Size(min = 2, max = 20, message = "Not enought word")
+  @Size(min = 1)
   private String instructions;
 
   public Recepies() {
   }
 
-  public Recepies(Long recepieId, User users, @NotNull String title,
-      @NotNull @Size(min = 5, max = 15, message = "Not enought characters") String ingredients,
-      @NotNull @Size(min = 5, max = 20, message = "Not enought word") String instructions) {
+  public Recepies(@NotNull Long recepieId, User users, @NotNull String title,
+      @NotNull @Size(min = 5) String ingredients,
+      @NotNull @Size(min = 5) String instructions) {
     this.recepieId = recepieId;
     this.users = users;
     this.title = title;

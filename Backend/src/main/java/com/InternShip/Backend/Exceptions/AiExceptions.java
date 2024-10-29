@@ -4,11 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * userNotFoundException
+ * AiExceptions
  */
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class userNotFoundException extends RuntimeException {
-  public userNotFoundException(String message) {
+@ResponseStatus(code = HttpStatus.NO_CONTENT)
+public class AiExceptions extends RuntimeException {
+  public AiExceptions(String message) {
     super(message);
   }
 }

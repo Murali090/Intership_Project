@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.InternShip.Backend.Model.Recepies.Recepies;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,8 +31,6 @@ public class User {
   @NotNull
   private String lastName;
 
-  @NotNull
-  @JsonIgnore
   private String password;
 
   @Email
@@ -39,9 +38,10 @@ public class User {
   private String email;
 
   @OneToMany(mappedBy = "users")
+  @JsonIgnore
   private List<Recepies> recepie;
 
-  @NotNull
+  @JsonProperty
   private GENDER gender;
 
   public User(Long userId, @NotEmpty String firstName, @NotEmpty String lastName, @NotNull String password,
@@ -82,10 +82,12 @@ public class User {
     this.lastName = lastName;
   }
 
+  @JsonIgnore
   public String getPassword() {
     return password;
   }
 
+  @JsonProperty
   public void setPassword(String password) {
     this.password = password;
   }
