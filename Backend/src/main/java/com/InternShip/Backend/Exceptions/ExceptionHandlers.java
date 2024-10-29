@@ -32,4 +32,10 @@ public class ExceptionHandlers extends ResponseEntityExceptionHandler {
     ErrorDetails error = new ErrorDetails(ex.getMessage(), request.getDescription(false));
     return new ResponseEntity<ErrorDetails>(error, HttpStatus.BAD_REQUEST);
   }
+
+  @ExceptionHandler(AiExceptions.class)
+  public final ResponseEntity<ErrorDetails> handleAiException(Exception ex, WebRequest request) throws Exception {
+    ErrorDetails error = new ErrorDetails(ex.getMessage(), request.getDescription(false));
+    return new ResponseEntity<ErrorDetails>(error, HttpStatus.NO_CONTENT);
+  }
 }

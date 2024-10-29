@@ -61,7 +61,6 @@ public class UserController {
     if (user.isEmpty()) {
       throw new userNotFoundException("Wrong user");
     }
-
     return ResponseEntity.ok(user);
 
   }
